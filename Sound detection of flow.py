@@ -44,9 +44,11 @@ for i in range(6, 457):
 input = np.reshape(MAT1, [451, 1], order="F")
 output = np.reshape(MAT11, [451, 1], order="F")
 
-f = pa.filters.FilterGNGD(n=1, mu=0.08, w="random")
+# f = pa.filters.FilterGNGD(n=1, mu=0.08, w="random")
+f = pa.filters.FilterNLMS(n=1, mu=0.08, w="random")
 y, e, w = f.run(output, input)
 le = pa.detection.learning_entropy(w)
+elbnd = pa.detection.ELBND(w, e)
+# plt.plot(elbnd)
 plt.plot(le)
-
 plt.show()
