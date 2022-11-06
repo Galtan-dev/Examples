@@ -49,7 +49,7 @@ print(d.shape)
 print(x.shape)
 
 try:
-    f = pa.filters.FilterNLMS(n=1, mu=0.01, w="zeros")
+    f = pa.filters.FilterGNGD(n=1, mu=0.01, w="zeros")
     y, e, w = f.run(d, x)
 except Exception as ex:
     print(ex)
